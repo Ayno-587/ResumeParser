@@ -3,6 +3,7 @@ import pandas as pd
 from fastapi import FastAPI, UploadFile, File
 from pydparser import ResumeParser
 import shutil
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
@@ -42,4 +43,8 @@ async def upload_resumes(files: list[UploadFile] = File(...)):
     output_file = "parsed_resumes.xlsx"
     df.to_excel(output_file, index=False)
 
-    return {"message": "Done", "file": output_file}
+    return FileResponse(
+    path=output_file,
+    filename="parsed_resumes.xlsx",
+    media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+)
