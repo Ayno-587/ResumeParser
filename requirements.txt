@@ -3,5 +3,5 @@ uvicorn
 pandas
 pydparser
 python-multipart
-spacy
+spacy==3.7.1
 openpyxl
