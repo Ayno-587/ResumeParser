@@ -4,6 +4,8 @@ from fastapi import FastAPI, UploadFile, File
 from pydparser import ResumeParser
 import shutil
 from fastapi.responses import FileResponse
+import nltk
+nltk.download('stopwords')
 
 app = FastAPI()
 
